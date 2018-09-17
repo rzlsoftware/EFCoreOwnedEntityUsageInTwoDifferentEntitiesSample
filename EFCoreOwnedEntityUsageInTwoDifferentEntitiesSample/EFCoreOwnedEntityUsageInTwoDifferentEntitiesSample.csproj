@@ -45,7 +45,9 @@
   <ItemGroup>
     <Compile Include="Author.cs" />
     <Compile Include="Book.cs" />
+    <Compile Include="Customer.cs" />
     <Compile Include="DbContextWithOneOwnedEntity.cs" />
+    <Compile Include="DbContextWithTwoOrMoreOwnedEntities.cs" />
     <Compile Include="Name.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
