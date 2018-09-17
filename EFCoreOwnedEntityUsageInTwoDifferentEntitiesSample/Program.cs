@@ -25,7 +25,7 @@ namespace EFCoreOwnedEntityUsageInTwoDifferentEntitiesSample
                 WriteLine(
                     entityType is null
                     ? $"The entityType for Type:{typeof(Name)} was not found."
-                    : $"The entityType {entityType.Name} was found."
+                    : $"The entityType {entityType.Name} was found."            // -> will be found
                     );
             }
         }
@@ -38,7 +38,7 @@ namespace EFCoreOwnedEntityUsageInTwoDifferentEntitiesSample
 
                 WriteLine(
                     entityType is null
-                    ? $"The entityType for Type:{typeof(Name)} was not found."
+                    ? $"The entityType for Type:{typeof(Name)} was not found."  // -> won´t find anything
                     : $"The entityType {entityType.Name} was found."
                     );
             }
