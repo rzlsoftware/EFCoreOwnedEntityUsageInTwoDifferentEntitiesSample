@@ -43,3 +43,17 @@ public class DbContextWithTwoOrMoreOwnedEntities : DbContext
 var entityType = new DbContextWithOneOwnedEntity().Model.FindEntityType(typeof(Name)); // works
 var entityType = new DbContextWithTwoOrMoreOwnedEntities().Model.FindEntityType(typeof(Name)); // entityType is null
 ```
+
+
+# Resolved with:
+
+**Answer from** @ajcvickers
+> This is because once a CLR type is mapped to multiple different types in the model, then the model type can no longer be identified just by the CLR type. Therefore, each model type becomes a "weak entity type" which is defined by both it's CLR type and the defining navigation property from it's owner. These can be found using a different overload of `FindEntityType`:
+> 
+> ```cs
+> var customerType = context.Model.FindEntityType(typeof(Customer));
+> var customerNameType = context.Model.FindEntityType(typeof(Name), nameof(Customer.Name), customerType);
+> 
+> var authorType = context.Model.FindEntityType(typeof(Author));
+> var authorNameType = context.Model.FindEntityType(typeof(Name), nameof(Author.Name), authorType);
+> ```
