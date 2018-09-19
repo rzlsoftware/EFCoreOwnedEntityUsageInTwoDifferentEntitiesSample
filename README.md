@@ -55,3 +55,5 @@ var entityType = new DbContextWithTwoOrMoreOwnedEntities().Model.FindEntityType(
 > var authorType = context.Model.FindEntityType(typeof(Author));
 > var authorNameType = context.Model.FindEntityType(typeof(Name), nameof(Author.Name), authorType);
 > ```
+>
+> If the CLR type is mapped to a single entity type in the model, then it can be found just by CLR type, as normal. It's only when the same CLR type is mapped to multiple entity types that they need to be treated differently.
